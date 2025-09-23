@@ -1,0 +1,53 @@
+# The pyproject is necessary to make my package installable.It was introduced in PEP 518 and later introduced in other PEPs to standardize how Python projects declare their build system requirements, dependencies, and settings.
+#Defining the build system:
+#Tells tools like pip how to build your project.
+#Example: specify if your project uses setuptools, poetry, or flit.
+#Managing dependencies:
+#Tools like Poetry and Hatch use it to declare project dependencies instead of requirements.txt.
+#Example: runtime dependencies, dev dependencies, etc.
+#Centralizing tool configuration
+#Many tools (e.g. Black, isort, pytest, ruff, mypy) read their settings from pyproject.toml.
+#This avoids having separate config files for each tool.
+#Standardization
+#It creates a single, modern, standardized way for Python projects to describe metadata and configuration.
+
+#This section is mandatory in pyproject.toml for any buildable project.
+# It specifies what tool(s) are needed to build your package and what
+# backend to call for the actual build. hatchling
+
+[build-system]
+requires=["hatchling"]
+build-backend="hatchling"
+
+# This is probably the most important section, and the fields should
+# be pretty much self-explaining. A couple of things:
+# - declaring "version" as a dynamic field is handy because minimized
+#   the places where the version string is hard-coded---we shall tell
+#   hatch a few lines below which file we want to read to the version
+#   string from;
+# - you should list in this section all the dependencies your package
+#   relies on, so they get automatically installed (if necessary) when
+#   the package is pip-installed.
+
+[project]
+name = "examproject"
+dynamic = ["version"]
+description = "project for the exam of cmepda"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.7"
+authors = [
+  { name = "Mario Ceccarelli", email = "mceccarelli28@gmail.com" }
+  ]
+dependencies = [
+  "numpy",
+  ]
+
+
+#Hatchling is the modern, lightweight build backend that powers Hatch — a Python project management tool.
+#In the Python packaging ecosystem, a build backend is the component that defines how to build a project into a distributable package (like a .whl or .tar.gz) based on the configuration in pyproject.toml.
+#Hatchling is to Hatch what setuptools is to legacy projects — it’s the engine that does the packaging, but designed with modern standards in mind.
+#Relationship with Hatchgit remote -v
+#Hatchling = the build backend (packaging engine).
+#Hatch = the higher-level project manager (adds virtual envs, versioning, publishing, etc.), which uses Hatchling under the hood.
+#You can use Hatchling alone if you only need building, or Hatch if you want the full workflow.

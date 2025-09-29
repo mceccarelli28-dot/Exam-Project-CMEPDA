@@ -96,7 +96,7 @@ def book_stats(testo: str):
 
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 #Questo comando permette di dare una descrizione del programma che si andrà ad utilizzare e permette di gestire tutti gli argomenti da riga di comando, la descrizione viene mostrata attraverso il comando -h. Questo oggetto definisce gli argomenti che il programma accetta
-parser = argparse.ArgumentParser(description="Calcola le frequenze relative delle lettere in un file di testo")
+parser = argparse.ArgumentParser(description="Questo programmino permette di calcolare le frequenze relative delle lettere in un testo. ")
 parser.add_argument("--histogram", action="store_true", help="Mostra un istogramma delle frequenze")
 #Questo invece permette di aggiungere un argomento al parser (posizionale e obbligatorio): file= nome dell'arg, help=descrizione dell'argomento per -h, quella precedente era per il programma in generale, questa h solo per l'argomento
 parser.add_argument("file", help="Percorso del file di testo di input")
